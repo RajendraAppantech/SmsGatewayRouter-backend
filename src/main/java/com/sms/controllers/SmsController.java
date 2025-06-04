@@ -42,8 +42,9 @@ public class SmsController {
 			@RequestParam("key") String key ,
 			@RequestParam("to") String to, 
 			@RequestParam("templateid") String templateid, 
-			@RequestParam("body") String body) {
-		return newSendSmsServices.sendSingleSms(key , to, templateid , body);
+			@RequestParam("body") String body,
+			@RequestParam(defaultValue = "") String fileId) {
+		return newSendSmsServices.sendSingleSms(key , to, templateid , body,fileId);
 	}
 	
 	@PostMapping("/bulksms")

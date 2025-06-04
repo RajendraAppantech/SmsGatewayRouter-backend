@@ -32,7 +32,7 @@ public class NewSendSmsServices {
 	@Autowired
 	private TemplateMasterRepository templateMasterRepository;
 
-	public CommonResponse sendSingleSms(String key, String to, String templateid, String body) {
+	public CommonResponse sendSingleSms(String key, String to, String templateid, String body, String fileId) {
 		CommonResponse response = new CommonResponse();
 		try {
 			
@@ -58,7 +58,9 @@ public class NewSendSmsServices {
 				return response;
 			}
 			
-			TemplateMaster temp = templateMasterRepository.findByTemplateKey(templateid);
+			System.out.println("templateid  " +templateid);
+			
+			TemplateMaster temp = templateMasterRepository.findByTemplateId(templateid);
 			if (temp == null) {
 				response.setStatus(false);
 				response.setMessage("Invalid Template ID");
@@ -86,7 +88,7 @@ public class NewSendSmsServices {
 			sms.setEntityId(temp.getEntityId());
 			sms.setSmsResponse("SMS send pending for proccess");
 			sms.setSendTxnId(txnId);
-			sms.setBulkFileId("");
+			sms.setBulkFileId(fileId);
 			smsMasterRepository.save(sms);
 			
 			response.setStatus(true);

@@ -25,5 +25,8 @@ public class Repositories {
 
 		TemplateMaster findByTemplateKey(String templateid);
 
+		TemplateMaster findByTemplateId(String templateid);
+
+
 	}
 }
