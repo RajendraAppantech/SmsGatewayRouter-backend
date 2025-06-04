@@ -60,7 +60,7 @@ public class NewSendSmsServices {
 			
 			System.out.println("templateid  " +templateid);
 			
-			TemplateMaster temp = templateMasterRepository.findByTemplateId(templateid);
+			TemplateMaster temp = templateMasterRepository.findByTemplateKey(templateid);
 			if (temp == null) {
 				response.setStatus(false);
 				response.setMessage("Invalid Template ID");
