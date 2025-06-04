@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
@@ -80,7 +81,8 @@ public class CustomerDetails {
     private BigDecimal rate;
 
     @Column(name = "rate_date")
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date rateDate;
 
     @Column(name = "sms_balance")
@@ -92,8 +94,9 @@ public class CustomerDetails {
     @Column(name = "last_txn_update_by", length = 100)
     private String lastTxnUpdateBy;
     
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_txn_update_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date lastTxnUpdateDate;
 
     @CreatedBy
@@ -101,9 +104,9 @@ public class CustomerDetails {
     private String createdBy;
 
     @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_dt")
-    @JsonSerialize(using = DateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
     @LastModifiedBy
@@ -111,17 +114,17 @@ public class CustomerDetails {
     private String modifyBy;
 
     @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_dt")
-    @JsonSerialize(using = DateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date modifyDt;
 
     @Column(name = "auth_by")
     private String authBy;
 
     @Column(name = "auth_dt")
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonSerialize(using = DateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date authDate;
 
     @Column(name = "auth_status")
@@ -137,8 +140,8 @@ public class CustomerDetails {
     private String entityName;
     
     @Column(name = "entity_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonSerialize(using = DateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
+	@Temporal(TemporalType.TIMESTAMP)
     private Date entityDate;
 
 	public String getCustomerCode() {

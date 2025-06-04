@@ -5,8 +5,7 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,29 +20,40 @@ public class TemplateMaster {
 	@Id
 	@Column(name = "template_id", nullable = false, length = 100)
 	private String templateId;
+
 	@Column(name = "template_name", nullable = false, length = 100)
 	private String templateName;
+
 	@Column(name = "template_type", nullable = false, length = 50)
 	private String templateType;
+
 	@Column(name = "sendor_id", nullable = false, length = 30)
 	private String sendorId;
+
 	@Column(name = "customer_code", nullable = false, length = 10)
 	private String customerCode;
+
 	@Column(name = "customer_name", nullable = false, length = 100)
 	private String customerName;
+
 	@Column(name = "entity_id", nullable = false, length = 50)
 	private String entityId;
+
 	@Column(name = "status", length = 10)
 	private String status;
+
 	@Column(name = "sms_content", nullable = false, length = 1024)
 	private String smsContent;
+
 	@Column(name = "sms_desc", length = 1024)
 	private String smsDesc;
+
 	@CreatedDate
+	@Column(name = "created_date")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss", timezone = "Asia/Kolkata")
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonSerialize(using = DateSerializer.class)
-	@Column(name = "created_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Date createdDate;
+
 	@CreatedBy
 	@Column(name = "created_by", length = 100)
 	private String createdBy;
